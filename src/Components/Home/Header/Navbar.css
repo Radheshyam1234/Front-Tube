@@ -1,0 +1,13 @@
+.nav-links {
+  margin-left: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--dark-secondary-color);
+  padding: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
