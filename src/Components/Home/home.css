@@ -1,0 +1,43 @@
+aside {
+  grid-area: aside;
+}
+
+section {
+  grid-area: section;
+}
+.chips-container {
+  display: flex;
+}
+.video-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option-icon {
+  padding: 8px;
+  cursor: pointer;
+}
+.home-page-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "aside section section section section "
+    "aside section section section section"
+    "aside section section section section ";
+}
+@media (max-width: 1000px) and (min-width: 576px) {
+  .home-page-layout {
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-page-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: "section";
+  }
+  aside {
+    display: none;
+  }
+}
