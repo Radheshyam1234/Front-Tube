@@ -5,15 +5,18 @@ import { App } from "./App";
 import { makeServer } from "./server";
 
 import { VideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
+import { StateProvider } from "./Context/StateContext";
 
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideosDataProvider>
-        <App />
-      </VideosDataProvider>
+      <StateProvider>
+        <VideosDataProvider>
+          <App />
+        </VideosDataProvider>
+      </StateProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
