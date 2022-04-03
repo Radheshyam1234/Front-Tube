@@ -5,8 +5,8 @@ aside {
 section {
   grid-area: section;
 }
-.chips-container {
-  display: flex;
+.category-container .btn {
+  margin-top: 0;
 }
 .video-description {
   display: flex;
