@@ -6,9 +6,6 @@ import "./home.css";
 import { VideoCard } from "./VideoCard/VideoCard";
 
 export const Home = () => {
-  useEffect(() => {
-    console.log(videosList);
-  }, []);
   const { videosList } = useVideosDataProvider();
   return (
     <div className="home-page-layout">

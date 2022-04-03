@@ -7,6 +7,6 @@ export const getVideos = async (setVideosList) => {
     } = await axios.get("/api/videos");
     setVideosList(videos);
   } catch (error) {
-    alert(error);
+    console.log(error);
   }
 };

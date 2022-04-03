@@ -10,14 +10,12 @@
 }
 .sidebar-child span {
   display: block;
-  /* font-weight: 500; */
   padding-top: 5px;
 }
 
 .sidebar-child span i {
   padding: 10px;
   margin-right: 10px;
-  /* font-size: 18px; */
 }
 
 .sidebar-child :hover {
