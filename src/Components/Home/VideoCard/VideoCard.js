@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./VideoCard.css";
 import { truncateString } from "../../../utilities/turncateString";
+
+import "./VideoCard.css";
 
 export const VideoCard = ({ video }) => {
   return (

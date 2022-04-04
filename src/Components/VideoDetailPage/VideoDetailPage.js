@@ -8,7 +8,7 @@ import "./video-detail-page.css";
 
 export const VideoDetailPage = () => {
   const [videoDetails, setVideoDetails] = useState(null);
-  //const playerRef = useRef(null);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,7 +29,6 @@ export const VideoDetailPage = () => {
         <>
           <div className="video-container">
             <ReactPlayer
-              // ref={playerRef}
               url={`https://www.youtube.com/watch?v=${id}`}
               width={"100%"}
               height={"100%"}

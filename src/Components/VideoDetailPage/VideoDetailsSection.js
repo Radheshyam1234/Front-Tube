@@ -14,16 +14,16 @@ export const VideoDetailsSection = ({ video }) => {
               <i className="far fa-thumbs-up btn-icon"></i>
             </button>
             <button className="btn large-btn video-action-button">
-              <i class="fas fa-folder-plus"></i>
+              <i className="fas fa-folder-plus"></i>
             </button>
             <button className="btn large-btn video-action-button">
               <i className="far fa-clock text-large"></i>
             </button>
             <button className="btn large-btn video-action-button">
-              <i class="far fa-edit"></i>
+              <i className="far fa-edit"></i>
             </button>
             <button className="btn large-btn video-action-button">
-              <i class="fas fa-share"></i>
+              <i className="fas fa-share"></i>
             </button>
           </div>
         </div>
@@ -39,7 +39,7 @@ export const VideoDetailsSection = ({ video }) => {
           ? video.description
           : truncateString(video.description, 100)}
         <button
-          className="btn small-btn secondary-btn"
+          className="btn  secondary-btn"
           onClick={() => {
             setShowFullDescription((prev) => !prev);
           }}

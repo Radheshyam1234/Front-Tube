@@ -8,7 +8,7 @@ export const videos = [
     _id: "jS4aFq5-91M",
     title: "JavaScript Programming - Full Course",
     thumbnail:
-      "https://i.ytimg.com/an_webp/jS4aFq5-91M/mqdefault_6s.webp?du=3000&sqp=CK7Rp5IG&rs=AOn4CLC_0-N2u2ArdM9fxdGOw0hiP8pqdw",
+      "https://i.ytimg.com/an_webp/jS4aFq5-91M/mqdefault_6s.webp?du=3000&sqp=CKuJrZIG&rs=AOn4CLCHOvQ5TBlLovOyR51A_7fTryDfFw",
     description:
       "Learn JavaScript from scratch by solving over a hundred different coding challenges. Go here for the interactive browser version",
     creator: "freeCodeCamp.org",
@@ -36,7 +36,7 @@ export const videos = [
   {
     _id: "rUpxAeoR7PU",
     thumbnail:
-      "https://i.ytimg.com/an_webp/rUpxAeoR7PU/mqdefault_6s.webp?du=3000&sqp=CKfRp5IG&rs=AOn4CLBoxtocIJn-Im8wQGLklBTOHV1-pA",
+      "https://i.ytimg.com/an_webp/rUpxAeoR7PU/mqdefault_6s.webp?du=3000&sqp=CIiGrZIG&rs=AOn4CLCD7MOFFEnUozw2UElq8LJjQ5O7eg",
 
     title:
       "The Event Loop in JavaScript in Hindi | You are expert if you know this",
