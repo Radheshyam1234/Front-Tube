@@ -1,20 +1,23 @@
 import React from "react";
-import "./VideoCard.css";
+import { Link } from "react-router-dom";
 import { truncateString } from "../../../utilities/turncateString";
+
+import "./VideoCard.css";
 
 export const VideoCard = ({ video }) => {
   return (
     <div className="card-vertical box-shadow">
       <div className="card-img">
-        <img
-          loading="lazy"
-          src={
-            "https://res.cloudinary.com/radheshyam11/image/upload/v1648794737/videoimge1_r00qva.webp"
-          }
-          alt="Nature"
-          className="img-responsive"
-        />
+        <Link to={`/watch/${video._id}`}>
+          <img
+            loading="lazy"
+            src={video.thumbnail}
+            alt="Nature"
+            className="img-responsive"
+          />
+        </Link>
       </div>
+
       <div className="video-info">
         <div className="video-description ">
           <div class="avatar xsm-avatar avatar-text">{video.creator[0]}</div>
