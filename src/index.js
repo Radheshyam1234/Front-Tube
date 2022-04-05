@@ -6,17 +6,20 @@ import { makeServer } from "./server";
 
 import { VideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
 import { StateProvider } from "./Context/StateContext";
+import { AuthProvider } from "./Context/AuthContext/AuthProvider";
 
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <StateProvider>
-        <VideosDataProvider>
-          <App />
-        </VideosDataProvider>
-      </StateProvider>
+      <AuthProvider>
+        <StateProvider>
+          <VideosDataProvider>
+            <App />
+          </VideosDataProvider>
+        </StateProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
