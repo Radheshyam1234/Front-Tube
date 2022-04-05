@@ -4,9 +4,7 @@ import { useAuthProvider } from "../../Context/AuthContext/AuthProvider";
 import "./Myprofile.css";
 export const MyProfile = () => {
   const { logoutUser, userProfile } = useAuthProvider();
-  useEffect(() => {
-    console.log(userProfile);
-  }, []);
+
   return (
     <div className="myProfile display-flex justify-center">
       <div className="w-30">
