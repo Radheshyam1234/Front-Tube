@@ -9,6 +9,7 @@ import {
   VideoDetailPage,
   Login,
   SignUp,
+  LikedVideo,
   MyProfile,
   Setting,
 } from "./Components";
@@ -40,6 +41,7 @@ export const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/watch/:id" element={<VideoDetailPage />} />
         <Route path="/myprofile" element={<MyProfile />}></Route>
+        <Route path="/liked" element={<LikedVideo />}></Route>
         <Route path="/myprofile/settings" element={<Setting />}></Route>
       </Routes>
     </div>
