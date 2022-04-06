@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { useVideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
-
+import { useStateContext } from "./Context/StateContext/StateProvider";
 import {
   Home,
   Navbar,
@@ -12,14 +12,22 @@ import {
   MyProfile,
   Setting,
 } from "./Components";
-import { getVideos } from "./utilities/backendRequest";
+import { getVideos, getLikedVideos } from "./utilities/backendRequest";
 
 import "./styles.css";
 
 export const App = () => {
+  const navigate = useNavigate();
   const { setVideosList } = useVideosDataProvider();
+  const { state, dispatch } = useStateContext();
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     getVideos(setVideosList);
+    if (token) {
+      getLikedVideos(state, dispatch);
+      navigate("/");
+    }
   }, []);
 
   return (

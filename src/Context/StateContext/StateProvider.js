@@ -6,10 +6,9 @@ const StateContext = createContext();
 export const StateProvider = ({ children }) => {
   const initialState = {
     playlists: [],
-    videos: [],
-    watchLater: {},
-    watchHistory: {},
-    likedVideos: {},
+    watchLater: [],
+    watchHistory: [],
+    likedVideos: [],
   };
   const [state, dispatch] = useReducer(stateReducer, initialState);
   return (
