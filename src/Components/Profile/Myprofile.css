@@ -1,0 +1,18 @@
+.myProfile {
+  align-items: center;
+  max-width: 60rem;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+.profile-page-links {
+  margin: 1.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--light-secondary-color);
+  text-align: center;
+}
+.Profile-details {
+  border: 1px solid var(--light-secondary-color);
+  flex-direction: column;
+  padding: 0 2rem;
+}
