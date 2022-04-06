@@ -25,6 +25,9 @@ export const useUserActions = () => {
 
       if (status == 200 || 201) {
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
+        let data = JSON.parse(localStorage.getItem("data"));
+        data = { ...data, likes };
+        localStorage.setItem("data", JSON.stringify(data));
       }
     } catch (error) {
       console.log(error);
@@ -46,6 +49,9 @@ export const useUserActions = () => {
 
       if (status == 200 || 201) {
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
+        let data = JSON.parse(localStorage.getItem("data"));
+        data = { ...data, likes };
+        localStorage.setItem("data", JSON.stringify(data));
       }
     } catch (error) {
       console.log(error);

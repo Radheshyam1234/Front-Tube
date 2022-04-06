@@ -16,7 +16,10 @@ export const AuthProvider = ({ children }) => {
 
   const signupNewUser = async ({ email, password, firstName, lastName }) => {
     try {
-      const res = await axios({
+      const {
+        data: { foundUser, encodedToken },
+        status,
+      } = await axios({
         method: "post",
         url: "/api/auth/signup",
         data: {
@@ -26,7 +29,13 @@ export const AuthProvider = ({ children }) => {
           lastName,
         },
       });
-      console.log(res);
+      if (status == 200) {
+        localStorage.setItem("token", encodedToken);
+        localStorage.setItem("data", JSON.stringify(foundUser));
+        setIsUserLoggedIn(true);
+        setUserProfile(foundUser);
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -44,6 +53,7 @@ export const AuthProvider = ({ children }) => {
 
       if (status == 200) {
         localStorage.setItem("token", encodedToken);
+        localStorage.setItem("data", JSON.stringify(foundUser));
         setIsUserLoggedIn(true);
         setUserProfile(foundUser);
         navigate("/");

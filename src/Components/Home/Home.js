@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Sidebar } from "./Sidebar/Sidebar";
-import { Categories } from "./Categories";
+import { Filters } from "./Filters";
 import { useVideosDataProvider } from "../../Context/VideosDataContext/VideosDataProvider";
 import "./home.css";
 import { VideoCard } from "./VideoCard/VideoCard";
@@ -14,7 +14,7 @@ export const Home = () => {
       </aside>
 
       <section>
-        <Categories />
+        <Filters />
         <div className="grid-4-column-layout">
           {videosList?.map((video) => {
             return <VideoCard video={video} />;

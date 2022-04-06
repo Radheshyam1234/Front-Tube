@@ -1,26 +1,23 @@
 import React from "react";
 
-export const Categories = () => {
+export const Filters = () => {
   return (
     <div className="category-container">
       <button className="btn primary-btn rounded-corner-btn">All</button>
       <button className="btn secondary-btn-outline rounded-corner-btn">
-        Comedy
+        C++
       </button>
       <button className="btn secondary-btn-outline rounded-corner-btn">
-        Games
+        Javascript
       </button>
       <button className="btn secondary-btn-outline rounded-corner-btn">
-        Movies
+        Frontend
       </button>
       <button className="btn secondary-btn-outline rounded-corner-btn">
-        Entertainment
+        Backend
       </button>
       <button className="btn secondary-btn-outline rounded-corner-btn">
-        Cricket
-      </button>
-      <button className="btn secondary-btn-outline rounded-corner-btn">
-        Music
+        MongoDb
       </button>
     </div>
   );
