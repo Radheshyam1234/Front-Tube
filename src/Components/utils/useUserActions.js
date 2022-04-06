@@ -24,7 +24,6 @@ export const useUserActions = () => {
       });
 
       if (status == 200 || 201) {
-        console.log(likes);
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
       }
     } catch (error) {
@@ -33,7 +32,6 @@ export const useUserActions = () => {
   };
 
   const removeFromLikedVideos = async (videoId) => {
-    console.log("removeFromLikedVideos called", videoId);
     try {
       const {
         data: { likes },
@@ -47,7 +45,6 @@ export const useUserActions = () => {
       });
 
       if (status == 200 || 201) {
-        console.log(likes);
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
       }
     } catch (error) {
