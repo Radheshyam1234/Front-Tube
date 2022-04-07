@@ -31,13 +31,11 @@ export const App = () => {
 
   useEffect(() => {
     getVideos(setVideosList);
-    getLikedVideos(dispatch, token);
-    getUserProfile(setUserProfile, token);
     if (token) {
-      getLikedVideos(state, dispatch);
-      navigate("/");
+      getUserProfile(setUserProfile);
+      getLikedVideos(dispatch);
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className="App">

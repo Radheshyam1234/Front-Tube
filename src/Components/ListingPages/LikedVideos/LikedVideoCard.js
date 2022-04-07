@@ -31,7 +31,7 @@ export const LikedVideoCard = ({ video }) => {
         <button
           className="btn"
           onClick={() => {
-            removeFromLikedVideos(video._id);
+            removeFromLikedVideos(video);
           }}
         >
           <i class="fas fa-trash"></i>

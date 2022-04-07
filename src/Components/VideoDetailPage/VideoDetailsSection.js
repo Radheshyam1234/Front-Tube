@@ -17,7 +17,7 @@ export const VideoDetailsSection = ({ video }) => {
               <button
                 className="btn large-btn video-action-button"
                 onClick={() => {
-                  removeFromLikedVideos(video._id);
+                  removeFromLikedVideos(video);
                 }}
               >
                 <i class="fas fa-thumbs-up"></i>

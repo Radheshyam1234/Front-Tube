@@ -36,7 +36,7 @@ export const LikedVideo = () => {
               .slice()
               .reverse()
               .map((video) => {
-                return <LikedVideoCard video={video} />;
+                return <LikedVideoCard video={video} key={video._id} />;
               })}
         </div>
       </div>
