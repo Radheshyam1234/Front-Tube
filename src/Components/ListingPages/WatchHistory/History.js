@@ -1,15 +1,15 @@
 import React from "react";
 import "../styles.css";
 
-import { LikedVideoCard } from "./LikedVideoCard";
 import { useStateContext } from "../../../Context/StateContext/StateProvider";
+import { HistoryVideoCard } from "./HistoryVideoCard";
 
-export const LikedVideo = () => {
+export const History = () => {
   const {
-    state: { likedVideos },
+    state: { watchHistory },
   } = useStateContext();
-  const length = likedVideos.length;
 
+  const length = watchHistory.length;
   return (
     <div className="likedVideos-container">
       <div class="grid-30-70-layout">
@@ -18,7 +18,7 @@ export const LikedVideo = () => {
             loading="lazy"
             src={
               length
-                ? likedVideos[length - 1].thumbnail
+                ? watchHistory[length - 1].thumbnail
                 : "https://res.cloudinary.com/radheshyam11/image/upload/v1649268374/images_r83ara.png"
             }
             alt="Nature"
@@ -31,11 +31,11 @@ export const LikedVideo = () => {
         </div>
         <div>
           {length &&
-            likedVideos
+            watchHistory
               .slice()
               .reverse()
               .map((video) => {
-                return <LikedVideoCard video={video} key={video._id} />;
+                return <HistoryVideoCard video={video} key={video._id} />;
               })}
         </div>
       </div>
