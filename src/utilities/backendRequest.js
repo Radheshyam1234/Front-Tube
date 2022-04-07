@@ -11,24 +11,12 @@ export const getVideos = async (setVideosList) => {
   }
 };
 
-export const getLikedVideos = async (state, dispatch) => {
-  try {
-    const {
-      data: { likes },
-      status,
-    } = await axios({
-      method: "GET",
-      url: `/api/user/likes`,
-      headers: {
-        authorization: localStorage.getItem("token"),
-      },
-    });
+export const getUserProfile = async (setUserProfile, token) => {
+  const user = JSON.parse(localStorage.getItem("data"));
+  setUserProfile(user);
+};
 
-    if (status == 200 || 201) {
-      // console.log(likes);
-      dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
-    }
-  } catch (error) {
-    console.log(error);
-  }
+export const getLikedVideos = async (dispatch) => {
+  const likedVideos = JSON.parse(localStorage.getItem("data")).likes;
+  dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideos });
 };

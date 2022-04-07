@@ -24,28 +24,36 @@ export const useUserActions = () => {
       });
 
       if (status == 200 || 201) {
-        dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
+        let data = JSON.parse(localStorage.getItem("data"));
+        data = { ...data, likes: [...data.likes, video] };
+        localStorage.setItem("data", JSON.stringify(data));
+        dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const removeFromLikedVideos = async (videoId) => {
+  const removeFromLikedVideos = async (video) => {
     try {
+      const videoId = video._id;
       const {
         data: { likes },
         status,
       } = await axios({
         method: "DELETE",
-        url: `/api/user/likes/${videoId}`,
+        url: `/api/user/likes/${video._id}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
       });
 
       if (status == 200 || 201) {
-        dispatch({ type: "SET_LIKED_VIDEOS", payload: likes });
+        let data = JSON.parse(localStorage.getItem("data"));
+        const likedVideos = data.likes.filter((vdo) => video._id !== vdo._id);
+        data = { ...data, likes: likedVideos };
+        localStorage.setItem("data", JSON.stringify(data));
+        dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
       }
     } catch (error) {
       console.log(error);
