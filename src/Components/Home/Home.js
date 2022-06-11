@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Sidebar } from "./Sidebar/Sidebar";
+
 import { Categories } from "./Categories";
+
 import { useVideosDataProvider } from "../../Context/VideosDataContext/VideosDataProvider";
 import "./home.css";
 import { VideoCard } from "./VideoCard/VideoCard";
@@ -13,8 +15,11 @@ export const Home = () => {
       <aside>
         <Sidebar />
       </aside>
+
       <section>
+
         <Categories setSearchCategory={setSearchCategory} />
+
         <div className="grid-4-column-layout">
           {searchCategory === "All"
             ? videosList?.map((video) => {

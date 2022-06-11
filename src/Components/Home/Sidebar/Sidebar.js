@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 export const Sidebar = () => {
@@ -24,9 +25,11 @@ export const Sidebar = () => {
       </div>
 
       <div className="sidebar-child text-semibold">
-        <span>
-          <i className="far fa-thumbs-up text-large"></i>Liked videos
-        </span>
+        <Link to="/liked">
+          <span>
+            <i className="far fa-thumbs-up text-large"></i>Liked videos
+          </span>
+        </Link>
       </div>
 
       <div className="sidebar-child text-semibold">
