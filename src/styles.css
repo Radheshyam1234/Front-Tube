@@ -44,16 +44,7 @@ body {
 a {
   text-decoration: none;
 }
-.auth-container {
-  max-width: 30rem;
-  padding: 2.5rem;
-  margin: 5rem auto;
-  box-shadow: 0 0 7px var(--light-secondary-color);
-}
 
-.auth-form-container {
-  width: 100%;
-}
 
 @media (max-width: 1000px) and (min-width: 768px) {
   .grid-4-column-layout {
