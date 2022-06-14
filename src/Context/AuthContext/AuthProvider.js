@@ -1,17 +1,22 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../utilities/ApiUrl";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    token && setIsUserLoggedIn(true);
+    if (token) {
+      setIsUserLoggedIn(true);
+      setToken(token);
+    }
   }, []);
 
   const signupNewUser = async ({ email, password, firstName, lastName }) => {
@@ -21,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         status,
       } = await axios({
         method: "post",
-        url: "/api/auth/signup",
+        url: `${API_URL}/users`,
         data: {
           email,
           password,
@@ -41,22 +46,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const loginUser = async ({ email, password }) => {
+  const loginUser = async ({ email, password, from }) => {
     try {
       const {
-        data: { foundUser, encodedToken },
+        data: { response },
         status,
-      } = await axios.post(`/api/auth/login`, {
-        email,
-        password,
+      } = await axios({
+        method: "POST",
+        url: `${API_URL}/users/authenticate`,
+        data: {
+          email,
+          password,
+        },
       });
 
-      if (status == 200) {
-        localStorage.setItem("token", encodedToken);
-        localStorage.setItem("data", JSON.stringify(foundUser));
+      if (status == 200 || 201) {
+        localStorage.setItem("token", response.token);
+        setToken(response.token);
+
         setIsUserLoggedIn(true);
-        setUserProfile(foundUser);
-        navigate("/");
+        setUserProfile(response?.user);
+        localStorage.setItem("user", JSON.stringify(response.user));
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.log(error);
@@ -65,9 +76,12 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = () => {
     localStorage.clear();
+
+    setToken("");
     setIsUserLoggedIn(false);
     setUserProfile(null);
-    navigate("/login");
+    navigate("/");
+    window.location.reload(false);
   };
 
   return (
@@ -77,6 +91,8 @@ export const AuthProvider = ({ children }) => {
         setIsUserLoggedIn,
         userProfile,
         setUserProfile,
+        token,
+        setToken,
         signupNewUser,
         loginUser,
         logoutUser,

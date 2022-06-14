@@ -28,6 +28,19 @@ body {
   height: 0.2px;
   margin: 0.5rem 0 1rem;
 }
+.align-center {
+  align-items: center;
+}
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.text-success {
+  color: var(--success-color);
+}
 
 .card-vertical {
   padding: 0;
