@@ -16,6 +16,7 @@ body {
 .w-70 {
   width: 70%;
 }
+
 .spacer-3rem {
   width: 100%;
   height: 3rem;
@@ -45,7 +46,10 @@ body {
   padding: 0;
   box-shadow: none;
 }
-
+.card-horizontal .card-img {
+  height: 100px;
+  width: 150px;
+}
 .rounded-corner-btn {
   border-radius: 1.5rem;
 }
@@ -53,16 +57,7 @@ body {
 a {
   text-decoration: none;
 }
-.auth-container {
-  max-width: 30rem;
-  padding: 2.5rem;
-  margin: 5rem auto;
-  box-shadow: 0 0 7px var(--light-secondary-color);
-}
 
-.auth-form-container {
-  width: 100%;
-}
 
 @media (max-width: 1000px) and (min-width: 768px) {
   .grid-4-column-layout {
