@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { truncateString } from "../../utilities/turncateString";
+import { useUserActions } from "../utils/useUserActions";
 import "./video-detail-page.css";
 
 export const VideoDetailsSection = ({ video }) => {
+  const { isPresentInLikedVideos, addToLikedVideos, removeFromLikedVideos } =
+    useUserActions();
   const [showFullDescription, setShowFullDescription] = useState(false);
   return (
     <>
@@ -10,9 +13,26 @@ export const VideoDetailsSection = ({ video }) => {
         <div className="video-info-container">
           <p className="text-large text-semibold">{video?.title}</p>
           <div className="video-action-button-container">
-            <button className="btn large-btn video-action-button">
-              <i className="far fa-thumbs-up btn-icon"></i>
-            </button>
+            {isPresentInLikedVideos(video) ? (
+              <button
+                className="btn large-btn video-action-button"
+                onClick={() => {
+                  removeFromLikedVideos(video);
+                }}
+              >
+                <i class="fas fa-thumbs-up"></i>
+              </button>
+            ) : (
+              <button
+                className="btn large-btn video-action-button"
+                onClick={() => {
+                  addToLikedVideos(video);
+                }}
+              >
+                <i class="far fa-thumbs-up"></i>
+              </button>
+            )}
+
             <button className="btn large-btn video-action-button">
               <i className="fas fa-folder-plus"></i>
             </button>
