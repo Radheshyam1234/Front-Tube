@@ -4,10 +4,14 @@ import ReactPlayer from "react-player";
 import axios from "axios";
 
 import { VideoDetailsSection } from "./VideoDetailsSection";
+import { useUserActions } from "../utils/useUserActions";
+
 import "./video-detail-page.css";
 
 export const VideoDetailPage = () => {
   const [videoDetails, setVideoDetails] = useState(null);
+  const { addToHistory } = useUserActions();
+  const token = localStorage.getItem("token");
 
   const { id } = useParams();
 
@@ -32,6 +36,11 @@ export const VideoDetailPage = () => {
               url={`https://www.youtube.com/watch?v=${id}`}
               width={"100%"}
               height={"100%"}
+              onStart={() => {
+                if (token) {
+                  addToHistory(videoDetails);
+                }
+              }}
             />
           </div>
           <VideoDetailsSection video={videoDetails} />

@@ -19,9 +19,11 @@ export const Sidebar = () => {
       <div className="divider-line"></div>
 
       <div className="sidebar-child text-semibold">
-        <span>
-          <i className="fas fa-history text-large"></i>History
-        </span>
+        <Link to="/history">
+          <span>
+            <i className="fas fa-history text-large"></i>History
+          </span>
+        </Link>
       </div>
 
       <div className="sidebar-child text-semibold">
