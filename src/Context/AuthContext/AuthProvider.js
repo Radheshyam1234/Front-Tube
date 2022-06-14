@@ -7,7 +7,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
-  const [startTime, setStartTime] = useState(0);
   const [token, setToken] = useState("");
   const navigate = useNavigate();
 
@@ -16,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setIsUserLoggedIn(true);
       setToken(token);
-      setStartTime(new Date().getTime());
     }
   }, []);
 
@@ -87,8 +85,6 @@ export const AuthProvider = ({ children }) => {
         signupNewUser,
         loginUser,
         logoutUser,
-        startTime,
-        setStartTime,
       }}
     >
       {children}
