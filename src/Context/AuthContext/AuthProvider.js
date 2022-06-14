@@ -1,10 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  getWeeklySpentTime,
-  addTimeSpent,
-} from "../../utilities/backendRequest";
 
 export const AuthContext = createContext();
 
@@ -62,7 +58,6 @@ export const AuthProvider = ({ children }) => {
         setIsUserLoggedIn(true);
         setUserProfile(response?.user);
         localStorage.setItem("user", JSON.stringify(response.user));
-        setStartTime(new Date().getTime());
         navigate(from, { replace: true });
       }
     } catch (error) {
@@ -71,11 +66,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    {
-      const endTime = new Date().getTime();
-      const spentTime = Number((endTime - startTime) / 1000);
-      addTimeSpent({ spentTime });
-    }
     localStorage.clear();
 
     setToken("");
