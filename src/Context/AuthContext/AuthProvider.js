@@ -1,17 +1,27 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+  getWeeklySpentTime,
+  addTimeSpent,
+} from "../../utilities/backendRequest";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [startTime, setStartTime] = useState(0);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    token && setIsUserLoggedIn(true);
+    if (token) {
+      setIsUserLoggedIn(true);
+      setToken(token);
+      setStartTime(new Date().getTime());
+    }
   }, []);
 
   const signupNewUser = async ({ email, password, firstName, lastName }) => {
@@ -32,21 +42,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const loginUser = async ({ email, password }) => {
+  const loginUser = async ({ email, password, from }) => {
     try {
       const {
-        data: { foundUser, encodedToken },
+        data: { response },
         status,
-      } = await axios.post(`/api/auth/login`, {
-        email,
-        password,
+      } = await axios({
+        method: "POST",
+        url: `http://localhost:8080/users/authenticate`,
+        data: {
+          email,
+          password,
+        },
       });
 
-      if (status == 200) {
-        localStorage.setItem("token", encodedToken);
+      if (status == 200 || 201) {
+        localStorage.setItem("token", response.token);
+        setToken(response.token);
         setIsUserLoggedIn(true);
-        setUserProfile(foundUser);
-        navigate("/");
+        setUserProfile(response?.user);
+        localStorage.setItem("user", JSON.stringify(response.user));
+        setStartTime(new Date().getTime());
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.log(error);
@@ -54,10 +71,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
+    {
+      const endTime = new Date().getTime();
+      const spentTime = Number((endTime - startTime) / 1000);
+      addTimeSpent({ spentTime });
+    }
     localStorage.clear();
+
+    setToken("");
     setIsUserLoggedIn(false);
     setUserProfile(null);
-    navigate("/login");
+    navigate("/");
+    window.location.reload(false);
   };
 
   return (
@@ -67,9 +92,13 @@ export const AuthProvider = ({ children }) => {
         setIsUserLoggedIn,
         userProfile,
         setUserProfile,
+        token,
+        setToken,
         signupNewUser,
         loginUser,
         logoutUser,
+        startTime,
+        setStartTime,
       }}
     >
       {children}
