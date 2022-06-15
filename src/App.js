@@ -8,7 +8,7 @@ import { Home, Navbar, Login, SignUp, LikedVideo } from "./Components";
 import {
   getVideos,
   getUserProfile,
-  getLikedVideos,
+  getPlaylists,
 } from "./utilities/backendRequest";
 import { PrivateRoute } from "./Components/PrivateRoute";
 
@@ -18,15 +18,22 @@ export const App = () => {
   const navigate = useNavigate();
   const { setVideosList } = useVideosDataProvider();
   const { state, dispatch } = useStateContext();
-  const { setUserProfile } = useAuthProvider();
-  const token = localStorage.getItem("token");
+  const { setUserProfile, token, setToken, startTime } = useAuthProvider();
 
   useEffect(() => {
     getVideos(setVideosList);
-    if (token) {
-      getUserProfile(setUserProfile);
-      getLikedVideos(dispatch);
+    const encoded = localStorage.getItem("token");
+    if (encoded) setToken(encoded);
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (token !== "") {
+        getUserProfile(setUserProfile);
+        getPlaylists(dispatch);
+      }
     }
+    fetchData();
   }, [token]);
 
   return (

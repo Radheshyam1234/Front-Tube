@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { truncateString } from "../../../utilities/turncateString";
+import { VideocardActionBtn } from "./VideocardActionBtn";
 
 import "./VideoCard.css";
 
@@ -32,7 +33,7 @@ export const VideoCard = ({ video }) => {
             {truncateString(video.title, 16)}
           </div>
 
-          {/* <VideocardActionBtn video={video} /> */}
+          <VideocardActionBtn video={video} />
         </div>
         <div>
           <div className="text-medium text-semibold secondary-text-color">
