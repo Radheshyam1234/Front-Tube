@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { truncateString } from "../../../utilities/turncateString";
+import { VideocardActionBtn } from "./VideocardActionBtn";
 
 import "./VideoCard.css";
 
 export const VideoCard = ({ video }) => {
   return (
-    <div className="card-vertical box-shadow">
+    <div className="card-vertical ">
       <div className="card-img">
         <Link to={`/watch/${video._id}`}>
           <img
@@ -20,20 +21,23 @@ export const VideoCard = ({ video }) => {
 
       <div className="video-info">
         <div className="video-description ">
-          <div class="avatar xsm-avatar avatar-text">{video.creator[0]}</div>
+          <div className="avatar xsm-avatar">
+            <img
+              loading="lazy"
+              className="responsive-img"
+              src={video.channelImageURL}
+              alt="pic"
+            />
+          </div>
           <div className=" video-title text-medium text-semibold">
             {truncateString(video.title, 16)}
           </div>
-          <div>
-            <i className="fas fa-ellipsis-v option-icon"></i>
-          </div>
+
+          <VideocardActionBtn video={video} />
         </div>
         <div>
-          <div className="text-small text-semibold secondary-text-color">
-            {video.creator}
-          </div>
-          <div className="video-views text-small secondary-text-color ">
-            1000 views
+          <div className="text-medium text-semibold secondary-text-color">
+            {video.channelName}
           </div>
         </div>
       </div>
