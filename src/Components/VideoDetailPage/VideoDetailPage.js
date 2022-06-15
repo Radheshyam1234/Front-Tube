@@ -4,11 +4,13 @@ import YouTube from "react-youtube";
 import axios from "axios";
 
 import { VideoDetailsSection } from "./VideoDetailsSection";
+import { NotesContainer } from "./Notes/NotesContainer";
 import { addToPlaylist } from "../../utilities/backendRequest";
 import { useStateContext } from "../../Context/StateContext/StateProvider";
 import { isPresentInWatchHistory } from "../../utilities/array-manipulation";
 
 import "./video-detail-page.css";
+import { API_URL } from "../../utilities/ApiUrl";
 
 export const VideoDetailPage = () => {
   const [videoDetails, setVideoDetails] = useState(null);
@@ -26,7 +28,7 @@ export const VideoDetailPage = () => {
           status,
         } = await axios({
           method: "GET",
-          url: `https://front-project-database.herokuapp.com/videos/${id}`,
+          url: `${API_URL}/videos/${id}`,
         });
         if (status == 200) {
           setVideoDetails(response);
@@ -76,7 +78,7 @@ export const VideoDetailPage = () => {
             </div>
           </div>
           <div className="notes-section" id="note-section">
-            {/* <NotesContainer videoId={videoDetails._id} playerRef={playerRef} /> */}
+            <NotesContainer videoId={videoDetails._id} playerRef={playerRef} />
           </div>
         </div>
       ) : (
