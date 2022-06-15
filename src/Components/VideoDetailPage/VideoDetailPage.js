@@ -26,7 +26,7 @@ export const VideoDetailPage = () => {
           status,
         } = await axios({
           method: "GET",
-          url: `http://localhost:8080/videos/${id}`,
+          url: `https://front-project-database.herokuapp.com/videos/${id}`,
         });
         if (status == 200) {
           setVideoDetails(response);
