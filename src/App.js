@@ -4,7 +4,14 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useVideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
 import { useStateContext } from "./Context/StateContext/StateProvider";
 import { useAuthProvider } from "./Context/AuthContext/AuthProvider";
-import { Home, Navbar, Login, SignUp, LikedVideo } from "./Components";
+import {
+  Home,
+  Navbar,
+  Login,
+  SignUp,
+  VideoDetailPage,
+  LikedVideo,
+} from "./Components";
 import {
   getVideos,
   getUserProfile,
@@ -45,6 +52,7 @@ export const App = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/watch/:id" element={<VideoDetailPage />} />
 
         <Route
           path="/liked"
