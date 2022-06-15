@@ -17,7 +17,7 @@ import {
 import {
   getVideos,
   getUserProfile,
-  getLikedVideos,
+  getPlaylists,
 } from "./utilities/backendRequest";
 
 import "./styles.css";
@@ -26,15 +26,22 @@ export const App = () => {
   const navigate = useNavigate();
   const { setVideosList } = useVideosDataProvider();
   const { state, dispatch } = useStateContext();
-  const { setUserProfile } = useAuthProvider();
-  const token = localStorage.getItem("token");
+  const { setUserProfile, token, setToken, startTime } = useAuthProvider();
 
   useEffect(() => {
     getVideos(setVideosList);
-    if (token) {
-      getUserProfile(setUserProfile);
-      getLikedVideos(dispatch);
+    const encoded = localStorage.getItem("token");
+    if (encoded) setToken(encoded);
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (token !== "") {
+        getUserProfile(setUserProfile);
+        getPlaylists(dispatch);
+      }
     }
+    fetchData();
   }, [token]);
 
   return (
