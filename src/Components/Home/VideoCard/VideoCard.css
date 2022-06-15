@@ -1,1 +1,25 @@
+.playlist-dialogue-container {
+  background-color: var(--complementary-text-color);
+  padding: 10px;
+  border-radius: 4px;
+  position: absolute;
+  right: 1rem;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
 
+.playlist-dialogue-container-child {
+  padding: 2px;
+  cursor: pointer;
+}
+
+.playlist-dialogue-container-child span {
+  display: block;
+  padding-top: 5px;
+}
+
+.playlist-dialogue-container-child span i {
+  padding: 5px;
+  margin-right: 5px;
+}

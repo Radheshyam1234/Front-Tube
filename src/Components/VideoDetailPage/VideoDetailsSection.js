@@ -17,6 +17,8 @@ import { AddToPlaylistPopup } from "./AddToPlaylistPopup";
 import { copyToClipboard } from "../../utilities/copylink";
 
 export const VideoDetailsSection = ({ video }) => {
+  const { isPresentInLikedVideos, addToLikedVideos, removeFromLikedVideos } =
+    useUserActions();
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [saveToPlaylist, setSaveToPlaylist] = useState(false);
   const [processingVideo, setProcessingVideo] = useState(false);
@@ -27,6 +29,7 @@ export const VideoDetailsSection = ({ video }) => {
 
   return (
     <>
+
       {state && (
         <>
           <div className="video-details-section">

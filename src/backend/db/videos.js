@@ -28,7 +28,7 @@ export const videos = [
     _id: "lMKhJPbK0HE",
     thumbnail:
       "https://i.ytimg.com/vi/lMKhJPbK0HE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDe7M_14Rr7Rio24LD3Px1UYtz5sg",
-    title: "",
+    title: "Leaqrn advance Js concept",
     description:
       "In this video, we cover some core fundamental event loop concepts - including task queue, microtask queue, requestAnimationFrame queue and more! ",
     creator: "codedamn",
