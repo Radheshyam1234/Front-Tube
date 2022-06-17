@@ -1,4 +1,25 @@
-.likedVideos-container {
+.Videos-container {
   max-width: 75rem;
   margin: auto;
+}
+
+.horizontal-card img {
+  width: 120px;
+  height: 100px;
+}
+
+.playlist-box {
+  height: 12rem;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  background-color: var(--light-primary-color);
+  color: var(--complementary-text-color);
+}
+
+.playlist-box:hover {
+  background-color: var(--light-secondary-color);
+  color: var(--primary-text-color);
 }
