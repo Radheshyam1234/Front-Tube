@@ -20,4 +20,12 @@
 
 .sidebar-child :hover {
   background-color: var(--light-secondary-color);
+  transition: 0.4s;
+}
+
+a {
+  color: black;
+}
+.up-down-icon {
+  color: var(--primary-color);
 }
