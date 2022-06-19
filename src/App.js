@@ -11,6 +11,8 @@ import {
   SignUp,
   VideoDetailPage,
   LikedVideo,
+  History,
+  WatchLater,
 } from "./Components";
 import {
   getVideos,
@@ -59,6 +61,23 @@ export const App = () => {
           element={
             <PrivateRoute>
               <LikedVideo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/watchlater"
+          element={
+            <PrivateRoute>
+              <WatchLater />
             </PrivateRoute>
           }
         />
