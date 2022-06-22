@@ -27,7 +27,7 @@ export const AllPlaylists = () => {
 
       {customPlaylists?.map((playlist) => {
         return (
-          <Link to={playlist._id}>
+          <Link to={playlist._id} key={playlist._id}>
             <div className="playlist-box box-shadow">
               <span>{playlist.name}</span>
             </div>
