@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { useVideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
 import { useStateContext } from "./Context/StateContext/StateProvider";
@@ -13,6 +13,9 @@ import {
   LikedVideo,
   History,
   WatchLater,
+  Library,
+  PlaylistVideos,
+  AllPlaylists,
 } from "./Components";
 import {
   getVideos,
@@ -24,10 +27,9 @@ import { PrivateRoute } from "./Components/PrivateRoute";
 import "./styles.css";
 
 export const App = () => {
-  const navigate = useNavigate();
   const { setVideosList } = useVideosDataProvider();
-  const { state, dispatch } = useStateContext();
-  const { setUserProfile, token, setToken, startTime } = useAuthProvider();
+  const { dispatch } = useStateContext();
+  const { setUserProfile, token, setToken } = useAuthProvider();
 
   useEffect(() => {
     getVideos(setVideosList);
@@ -78,6 +80,32 @@ export const App = () => {
           element={
             <PrivateRoute>
               <WatchLater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/library"
+          element={
+            <PrivateRoute>
+              <Library />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/playlists"
+          element={
+            <PrivateRoute>
+              <AllPlaylists />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/playlists/:playlistId"
+          element={
+            <PrivateRoute>
+              <PlaylistVideos />
             </PrivateRoute>
           }
         />
