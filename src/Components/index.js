@@ -10,4 +10,5 @@ export {
   PlaylistVideos,
   AllPlaylists,
 } from "./ListingPages";
+export { SearchResultPage } from "./SearchResults";
 export * from "./Profile";

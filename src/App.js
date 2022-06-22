@@ -9,6 +9,7 @@ import {
   Navbar,
   Login,
   SignUp,
+  SearchResultPage,
   VideoDetailPage,
   LikedVideo,
   History,
@@ -57,6 +58,7 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/watch/:id" element={<VideoDetailPage />} />
+        <Route path="/search/:query" element={<SearchResultPage />} />
 
         <Route
           path="/liked"
