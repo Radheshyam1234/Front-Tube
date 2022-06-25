@@ -21,11 +21,6 @@ export const SearchResultPage = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(searchedItem);
-    console.log(FilteredData());
-  }, []);
-
   return (
     <div>
       {FilteredData().length ? (
