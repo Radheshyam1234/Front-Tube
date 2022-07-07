@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { useVideosDataProvider } from "./Context/VideosDataContext/VideosDataProvider";
 import { useStateContext } from "./Context/StateContext/StateProvider";
 import { useAuthProvider } from "./Context/AuthContext/AuthProvider";
+import { useToast } from "./Context/ToastContext/ToastProvider";
 import {
   Home,
   Navbar,
@@ -18,19 +19,22 @@ import {
   PlaylistVideos,
   AllPlaylists,
 } from "./Components";
+import { Toast } from "./Components/Toast/Toast";
 import {
   getVideos,
   getUserProfile,
   getPlaylists,
 } from "./utilities/backendRequest";
 import { PrivateRoute } from "./Components/PrivateRoute";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles.css";
 
 export const App = () => {
   const { setVideosList } = useVideosDataProvider();
   const { dispatch } = useStateContext();
   const { setUserProfile, token, setToken } = useAuthProvider();
+  const { toastMsg } = useToast();
 
   useEffect(() => {
     getVideos(setVideosList);
@@ -51,6 +55,15 @@ export const App = () => {
   return (
     <div className="App">
       <Navbar />
+      <ToastContainer
+        position="top-center"
+        autoClose="1800"
+        limit="2"
+        style={{ top: "15em" }}
+        icon={false}
+      />
+      {toastMsg.msg && <Toast {...toastMsg} />}
+
       <div className="spacer-3rem"></div>
       <Routes>
         <Route path="/" element={<Home />} />

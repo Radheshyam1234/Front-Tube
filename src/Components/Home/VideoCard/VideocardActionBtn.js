@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../../Context/StateContext/StateProvider";
+import { useToast } from "../../../Context/ToastContext/ToastProvider";
 import { copyToClipboard } from "../../../utilities/copylink";
 import {
   isPresentInLikedVideos,
@@ -15,6 +16,7 @@ export const VideocardActionBtn = ({ video }) => {
   const { state, dispatch } = useStateContext();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const { toastMsg, setToastMsg } = useToast();
   const [openDialogue, setOpenDialogue] = useState(false);
 
   return (
@@ -53,6 +55,7 @@ export const VideocardActionBtn = ({ video }) => {
                         type: "SET_WATCH_LATER",
                         dispatch,
                         setOpenDialogue,
+                        setToastMsg,
                       })
                     : addToPlaylist({
                         playlistId: state?.watchLater?._id,
@@ -60,6 +63,7 @@ export const VideocardActionBtn = ({ video }) => {
                         type: "SET_WATCH_LATER",
                         dispatch,
                         setOpenDialogue,
+                        setToastMsg,
                       });
                 }
               }}
@@ -88,6 +92,7 @@ export const VideocardActionBtn = ({ video }) => {
                         type: "SET_LIKED_VIDEOS",
                         dispatch,
                         setOpenDialogue,
+                        setToastMsg,
                       })
                     : addToPlaylist({
                         playlistId: state?.likedVideos?._id,
@@ -95,6 +100,7 @@ export const VideocardActionBtn = ({ video }) => {
                         type: "SET_LIKED_VIDEOS",
                         dispatch,
                         setOpenDialogue,
+                        setToastMsg,
                       });
                 }
               }}
