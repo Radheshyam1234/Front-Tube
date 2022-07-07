@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 import { removeFromPlaylist } from "../../utilities/backendRequest";
 import { useStateContext } from "../../Context/StateContext/StateProvider";
-
+import { useToast } from "../../Context/ToastContext/ToastProvider";
 import "./styles.css";
 
 export const HorizontalVideoCard = ({ videoItem, type, playlistId }) => {
   const { state, dispatch } = useStateContext();
+  const { toastMsg, setToastMsg } = useToast();
   const { video, date: timeStamp } = videoItem;
 
   return (
@@ -47,6 +48,7 @@ export const HorizontalVideoCard = ({ videoItem, type, playlistId }) => {
               video,
               playlistId,
               type,
+              setToastMsg,
             });
           }}
         >

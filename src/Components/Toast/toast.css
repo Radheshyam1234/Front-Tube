@@ -1,0 +1,13 @@
+.toast {
+  position: fixed;
+  top: 6rem;
+  right: 0px;
+
+  z-index: 2;
+}
+
+@media (max-width: 790px) {
+  .toast {
+    top: 8rem;
+  }
+}

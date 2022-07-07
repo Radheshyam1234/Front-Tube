@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { truncateString } from "../../utilities/turncateString";
 import { useStateContext } from "../../Context/StateContext/StateProvider";
-
+import { useToast } from "../../Context/ToastContext/ToastProvider";
 import {
   addToPlaylist,
   removeFromPlaylist,
@@ -22,6 +22,7 @@ export const VideoDetailsSection = ({ video }) => {
   const [processingVideo, setProcessingVideo] = useState(false);
 
   const { state, dispatch } = useStateContext();
+  const { toastMsg, setToastMsg } = useToast();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -55,6 +56,7 @@ export const VideoDetailsSection = ({ video }) => {
                           video,
                           type: "SET_LIKED_VIDEOS",
                           dispatch,
+                          setToastMsg,
                           setProcessingVideo,
                         });
                     }}
@@ -75,7 +77,7 @@ export const VideoDetailsSection = ({ video }) => {
                           video,
                           type: "SET_LIKED_VIDEOS",
                           dispatch,
-
+                          setToastMsg,
                           setProcessingVideo,
                         });
                     }}
@@ -115,7 +117,7 @@ export const VideoDetailsSection = ({ video }) => {
                           video,
                           type: "SET_WATCH_LATER",
                           dispatch,
-
+                          setToastMsg,
                           setProcessingVideo,
                         });
                     }}
@@ -136,7 +138,7 @@ export const VideoDetailsSection = ({ video }) => {
                           video,
                           type: "SET_WATCH_LATER",
                           dispatch,
-
+                          setToastMsg,
                           setProcessingVideo,
                         });
                     }}
