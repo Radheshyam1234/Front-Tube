@@ -12,6 +12,7 @@ import {
 } from "../../utilities/backendRequest";
 import { useStateContext } from "../../Context/StateContext/StateProvider";
 import { useAuthProvider } from "../../Context/AuthContext/AuthProvider";
+import { useToast } from "../../Context/ToastContext/ToastProvider";
 
 import "./video-detail-page.css";
 
@@ -19,6 +20,7 @@ export const AddToPlaylistPopup = ({ video, setSaveToPlaylist }) => {
   const navigate = useNavigate();
   const { state, dispatch } = useStateContext();
   const { token } = useAuthProvider();
+  const { toastMsg, setToastMsg } = useToast();
 
   const [addPlaylistInput, setaddPlaylistInput] = useState(false);
   const [playlistName, setPlaylistName] = useState("");
@@ -37,6 +39,7 @@ export const AddToPlaylistPopup = ({ video, setSaveToPlaylist }) => {
       dispatch,
       video,
       name: playlistName,
+      setToastMsg,
     });
     setaddPlaylistInput(false);
     setSaveToPlaylist(false);
@@ -68,12 +71,14 @@ export const AddToPlaylistPopup = ({ video, setSaveToPlaylist }) => {
                     video,
                     type: "SET_WATCH_LATER",
                     dispatch,
+                    setToastMsg,
                   })
                 : addToPlaylist({
                     playlistId: state?.watchLater?._id,
                     video,
                     type: "SET_WATCH_LATER",
                     dispatch,
+                    setToastMsg,
                   });
             }
           }}
@@ -103,12 +108,14 @@ export const AddToPlaylistPopup = ({ video, setSaveToPlaylist }) => {
                         video,
                         type: "UPDATE_PLAYLIST",
                         dispatch,
+                        setToastMsg,
                       })
                     : addToPlaylist({
                         playlistId: playlist._id,
                         video,
                         type: "UPDATE_PLAYLIST",
                         dispatch,
+                        setToastMsg,
                       });
                 }
               }}
