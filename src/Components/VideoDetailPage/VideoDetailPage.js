@@ -11,6 +11,7 @@ import { isPresentInWatchHistory } from "../../utilities/array-manipulation";
 
 import "./video-detail-page.css";
 import { API_URL } from "../../utilities/ApiUrl";
+import { Loader } from "../Loader/Loader";
 
 export const VideoDetailPage = () => {
   const [videoDetails, setVideoDetails] = useState(null);
@@ -82,11 +83,7 @@ export const VideoDetailPage = () => {
           </div>
         </div>
       ) : (
-        <div className="display-flex justify-center ">
-          <div className="loader-container box-shadow">
-            <div className="loader"></div>
-          </div>
-        </div>
+        <Loader />
       )}
     </div>
   );
