@@ -18,6 +18,9 @@ import {
   Library,
   PlaylistVideos,
   AllPlaylists,
+  ProfilePage,
+  MyProfile,
+  Setting,
 } from "./Components";
 import { Toast } from "./Components/Toast/Toast";
 import {
@@ -70,6 +73,7 @@ export const App = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/myprofile" element={<MyProfile />}></Route> */}
         <Route path="/watch/:id" element={<VideoDetailPage />} />
         <Route path="/search/:query" element={<SearchResultPage />} />
 
@@ -124,6 +128,32 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/myprofile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        >
+          <Route
+            index
+            element={
+              <PrivateRoute>
+                <MyProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <PrivateRoute>
+                <Setting />
+              </PrivateRoute>
+            }
+          />
+        </Route>
       </Routes>
     </div>
   );
