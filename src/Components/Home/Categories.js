@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export const Categories = ({ setSearchCategory }) => {
+export const Categories = ({ searchCategoryHandler }) => {
   const videoCategories = [
     "All",
     "CPP",
@@ -14,7 +14,10 @@ export const Categories = ({ setSearchCategory }) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const searchQuery = query.get("category") ? query.get("category") : "All";
-  setSearchCategory(searchQuery);
+
+  useEffect(() => {
+    searchCategoryHandler(searchQuery);
+  }, [searchQuery]);
 
   return (
     <div className="category-container">

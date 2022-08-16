@@ -10,9 +10,9 @@ export const Navbar = () => {
   return (
     <header className="header">
       <Link to="/" className="logo">
-        <i class="fab fa-youtube"></i>FrontTube
+        <i className="fab fa-youtube"></i>FrontTube
       </Link>
-      <div class="nav-links">
+      <div className="nav-links">
         <Link to="/" className="nav-link">
           Home
         </Link>
@@ -26,7 +26,7 @@ export const Navbar = () => {
         {isUserLoggedIn ? (
           <Link to="/myprofile">
             {" "}
-            <span class="avatar xsm-avatar avatar-text">R</span>
+            <span className="avatar xsm-avatar avatar-text">R</span>
           </Link>
         ) : (
           <Link to="/login">

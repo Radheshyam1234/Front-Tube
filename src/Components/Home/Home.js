@@ -11,6 +11,11 @@ import { Loader } from "../Loader/Loader";
 export const Home = () => {
   const { videosList } = useVideosDataProvider();
   const [searchCategory, setSearchCategory] = useState("All");
+
+  const searchCategoryHandler = (searchQuery) => {
+    setSearchCategory(searchQuery);
+  };
+
   return (
     <div className="home-page-layout">
       <aside>
@@ -18,7 +23,7 @@ export const Home = () => {
       </aside>
 
       <section>
-        <Categories setSearchCategory={setSearchCategory} />
+        <Categories searchCategoryHandler={searchCategoryHandler} />
 
         <div className="grid-4-column-layout">
           {videosList.length ? (
