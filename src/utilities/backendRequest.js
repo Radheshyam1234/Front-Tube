@@ -8,7 +8,7 @@ export const getVideos = async (setVideosList) => {
       status,
     } = await axios({
       method: "get",
-      url: `https://front-project-database.herokuapp.com/videos`,
+      url: `${API_URL}/videos`,
     });
     if (status == 200) {
       setVideosList(response);
